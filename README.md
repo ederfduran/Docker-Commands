@@ -1,2 +1,2 @@
 # Docker-Commands
-Useful set of commands in Docker
+Useful set of commands in Docker.
