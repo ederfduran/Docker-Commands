@@ -38,7 +38,7 @@ sudo yum-config-manager \
     sudo systemctl start docker && sudo systemctl enable docker
 ```
 
-* Add cloud_user to the docker group:
+* Add user to the docker group:
 ```sh
     sudo usermod -aG docker cloud_user
 ```
