@@ -46,11 +46,13 @@ docker -h
 * ***create*** Create a new container
 * ***diff*** Inspect changes to files or directories on a container's filesystem
 * ***exec*** Run a command in a running container
+  ***exec -it <container_id> /bin/bash*** enter/login into container terminal
 * ***export*** Export a container's filesystem as a tar archive
 * ***inspect*** Display detailed information on one or more containers
 * ***kill*** Kill one or more running containers
 * ***logs*** Fetch the logs of a container
 * ***ls*** List containers
+  ***ls -a*** List containers inluding the ones that have been stopped
 * ***pause*** Pause all processes within one or more containers
 * ***port*** List port mappings or a specific mapping for the container
 * ***prune*** Remove all stopped containers
@@ -58,6 +60,7 @@ docker -h
 * ***restart*** Restart one or more containers
 * ***rm*** Remove one or more containers
 * ***run*** Run a command in a new container
+  ***run -P*** map all port existing for this container and mapped to a port random
 * ***start*** Start one or more stopped containers
 * ***stats*** Display a live stream of container(s) resource usage statistics
 * ***stop*** Stop one or more running containers
@@ -65,3 +68,27 @@ docker -h
 * ***unpause*** Unpause all processes within one or more containers
 * ***update*** Update configuration of one or more containers
 * ***wait*** Block until one or more containers stop, then print their exit codes
+
+# Creating Containers
+
+### docker container run
+
+* ***--help*** Print usage
+* ***--rm*** Automatically remove the container when it exits
+* ***-d, --detach*** Run container in background and print container ID
+* ***-i, --interactive*** Keep STDIN open even if not attached
+* ***--name string*** Assign a name to the container
+* ***-p, --publish list*** Publish a container's port(s) to the host
+* ***-t, --tty*** Allocate a pseudo-TTY
+* ***-v, --volume list*** Mount a volume (the bind type of mount)
+* ***--mount mount*** Attach a filesystem mount to the container
+* ***--network string*** Connect a container to a network (default "default")
+
+Create a container and attach to it:
+`docker container run –it busybox`
+
+Create a container and run it in the background:
+`docker container run –d nginx`
+
+Create a container that you name and run it in the background:
+`docker container run –d –name myContainer busybox`
