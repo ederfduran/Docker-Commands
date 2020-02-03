@@ -52,7 +52,7 @@ docker -h
 * ***kill*** Kill one or more running containers
 * ***logs*** Fetch the logs of a container
 * ***ls*** List containers
-  ***ls -a*** List containers inluding the ones that have been stopped
++ ***ls -a*** List containers inluding the ones that have been stopped
 * ***pause*** Pause all processes within one or more containers
 * ***port*** List port mappings or a specific mapping for the container
 * ***prune*** Remove all stopped containers
@@ -60,7 +60,7 @@ docker -h
 * ***restart*** Restart one or more containers
 * ***rm*** Remove one or more containers
 * ***run*** Run a command in a new container
-  ***run -P*** map all port existing for this container and mapped to a port random
++ ***run -P*** map all port existing for this container and mapped to a port random
 * ***start*** Start one or more stopped containers
 * ***stats*** Display a live stream of container(s) resource usage statistics
 * ***stop*** Stop one or more running containers
@@ -85,10 +85,16 @@ docker -h
 * ***--network string*** Connect a container to a network (default "default")
 
 Create a container and attach to it:
-`docker container run –it busybox`
+```sh
+docker container run –it busybox
+```
 
 Create a container and run it in the background:
-`docker container run –d nginx`
+```sh
+docker container run –d nginx
+```
 
 Create a container that you name and run it in the background:
-`docker container run –d –name myContainer busybox`
+```sh
+docker container run –d –name myContainer busybox
+```
