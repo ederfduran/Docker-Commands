@@ -46,13 +46,13 @@ docker -h
 * ***create*** Create a new container
 * ***diff*** Inspect changes to files or directories on a container's filesystem
 * ***exec*** Run a command in a running container
-  ***exec -it <container_id> /bin/bash*** enter/login into container terminal
+    + ***exec -it <container_id> /bin/bash*** enter/login into container terminal
 * ***export*** Export a container's filesystem as a tar archive
 * ***inspect*** Display detailed information on one or more containers
 * ***kill*** Kill one or more running containers
 * ***logs*** Fetch the logs of a container
 * ***ls*** List containers
-+ ***ls -a*** List containers inluding the ones that have been stopped
+    + ***ls -a*** List containers inluding the ones that have been stopped
 * ***pause*** Pause all processes within one or more containers
 * ***port*** List port mappings or a specific mapping for the container
 * ***prune*** Remove all stopped containers
@@ -60,7 +60,7 @@ docker -h
 * ***restart*** Restart one or more containers
 * ***rm*** Remove one or more containers
 * ***run*** Run a command in a new container
-+ ***run -P*** map all port existing for this container and mapped to a port random
+    + ***run -P*** map all port existing for this container and mapped to a port random
 * ***start*** Start one or more stopped containers
 * ***stats*** Display a live stream of container(s) resource usage statistics
 * ***stop*** Stop one or more running containers
@@ -97,4 +97,27 @@ docker container run –d nginx
 Create a container that you name and run it in the background:
 ```sh
 docker container run –d –name myContainer busybox
+```
+
+# Exposing and Publishing Container Ports
+
+### Exposing
+* Expose a port or a range of ports
+* This does not publish the port
+* Use `--expose [PORT]`
+```sh
+docker container run --expose 1234 [IMAGE]
+```
+### Publishing:
+* Maps a container's port to a host`s port
+* `-p` or `--publish` publishes a container's port(s) to the host
+* `-P`, or `--publish-all` publishes all exposed ports to random ports
+```sh
+docker container run -p [HOST_PORT]:[CONTAINER_PORT] [IMAGE]
+docker container run -p [HOST_PORT]:[CONTAINER_PORT]/tcp -p [HOST_PORT]:[CONTAINER_PORT]/udp [IMAGE]
+docker container run -P
+```
+### Lists all port mappings or a specific mapping for a container:
+```sh
+docker container port [Container_NAME]
 ```
