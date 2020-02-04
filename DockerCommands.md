@@ -117,7 +117,41 @@ docker container run -p [HOST_PORT]:[CONTAINER_PORT] [IMAGE]
 docker container run -p [HOST_PORT]:[CONTAINER_PORT]/tcp -p [HOST_PORT]:[CONTAINER_PORT]/udp [IMAGE]
 docker container run -P
 ```
+ex: Here expose port 3000 of container but don't mapped. in another hand it mapped 8080 port from local host to port 80 of container. port 80 is exposed by default. So if you `curl localhost:8080` you will notice you have default page of nginx 
+```sh
+docker container run -d --expose 3000 -p 8080:80 nginx
+```
+
+
 ### Lists all port mappings or a specific mapping for a container:
 ```sh
 docker container port [Container_NAME]
+```
+
+# Executing Container Commands
+
+Executing a command:
+* Dockerfile
+* During a Docker run
+* Using the exec command
+
+Commands can be:
+* One and done Commands
+* Long running Commands
+
+### Start a container with a command:
+```sh
+docker container run [IMAGE] [CMD]
+```
+### Execute a command on a container:
+```sh
+docker container exec -it [NAME] [CMD]
+```
+
+Example:
+```sh
+docker container run -d -p 8080:80 nginx
+docker container ps
+docker container exec -it [NAME] /bin/bash
+docker container exec -it [NAME] ls /usr/share/nginx/html/
 ```
